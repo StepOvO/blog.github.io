@@ -1,0 +1,39 @@
+#7.4**分析成绩**
+编写一个程序，读入个数不确定的考试分数，并判断有多少个分数是大于或等于平均分的，多少个分数是低于平均分的。
+输入一个负数表示输入的结束。假设最高分为100。
+```java
+import java.util.Scanner;
+
+public class Ex74 {
+   public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       int[] nums = new int[101];
+       while(true){
+           int num = sc.nextInt();
+           if(num < 0){
+               break;
+           }
+           nums[num]++;
+
+       }
+       double average;
+       int countScore = 0;
+       int count = 0;
+       for(int i = 0; i < nums.length; i++){
+            countScore += nums[i] * i;
+            count += nums[i];
+       }
+       average = (double)countScore / count;
+       int lowAverage=0,highAverage=0;
+       for (int i = 0; i < nums.length; i++) {
+           if(i < average)
+                lowAverage += nums[i];
+            else {
+                highAverage += nums[i];
+            }
+       }
+    System.out.println("Average is: "+average+","+lowAverage+", "+highAverage);
+   } 
+}
+```
+运行示例：
